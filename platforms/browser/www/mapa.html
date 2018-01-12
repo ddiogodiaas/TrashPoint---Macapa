@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+<style>
+    body{
+        margin: 0;
+        padding: 0
+    }
+      #map {
+        width: 100vw;
+        height: 91vh;
+        background-color: grey;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+    <title></title>
+</head>
+
+<body>
+   <nav class="navbar navbar-light bg-success">
+  <a class="navbar-brand btn btn-light" href="index.html">
+    <img src="img/volta.png">
+  </a>
+  <span style="color:#fff"><h5>TrashPoint - Macapá</h5></span>
+</nav>
+
+    <div id="map"></div>
+    <script>
+      function initMap() {
+
+        var residencial = {lat:0.0194244, lng: -51.0770990};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 11,
+          center: residencial
+        });
+        var contentString = "<h6>Coleta de Lixo Sólido</h6></b><br>Residencial São José<br>Rua Dezenove de Julho, Rua Claudomiro de Moraes - Buritizal, Macapá - AP, 68904-800";
+        var infowindow = new google.maps.InfoWindow({content: contentString});
+
+        var marker = new google.maps.Marker({
+          position: residencial,
+          map: map,
+          icon:'img/vermelho1.png'
+        });
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+
+
+
+
+
+        var diana = {lat:0.0562644, lng: -51.0568167};
+        var marker2 = new google.maps.Marker({
+          position: diana,
+          map: map,
+          icon:'img/vermelho1.png'
+        });
+
+         var contentString2 = "<h6>Coleta Lixo Sólido - Metal</h6></b><br>Diana Metais<br>Av Caubi Sérgio Melo 320 - Pacoval, Macapá - AP, 68908-761<br>Fone:99151-3081";
+
+        var infowindow2 = new google.maps.InfoWindow({content: contentString2});
+         marker2.addListener('click', function() {
+          infowindow2.open(map, marker2);
+        });
+        
+
+
+
+
+        var chico = {lat:0.0496709, lng: -51.0533897};
+        var marker3 = new google.maps.Marker({
+          position: chico,
+          map: map,
+          icon:'img/marron1.png'
+        });
+
+         var contentString3 = "<h6>Coleta de Oleo de Cozinha</h6></b><br>Praça Chico Noé<br>Av. Ana Nery, 535 - Jesus de Nazaré, Macapá - AP, 68908-186";
+
+        var infowindow3 = new google.maps.InfoWindow({content: contentString3});
+         marker3.addListener('click', function() {
+          infowindow3.open(map, marker3);
+        });
+
+
+
+
+
+
+         var floriano = {lat:0.0303727, lng: -51.0552827};
+         var marker4 = new google.maps.Marker({
+          position: floriano,
+          map: map,
+          icon:'img/marron1.png'
+        });
+
+         var contentString4 = "<h6>Coleta de Oleo de Cozinha</h6>Praça Floriano Peixoto<br>R. Raimundo Q Souza, 98 - Central, Macapá - AP, 68900-065";
+
+        var infowindow4 = new google.maps.InfoWindow({content: contentString4});
+         marker4.addListener('click', function() {
+          infowindow4.open(map, marker4);
+        });
+
+
+         var fatima = {lat:0.0359631, lng: -51.0699000};
+          var marker5 = new google.maps.Marker({
+          position: fatima,
+          map: map,
+          icon:'img/marron1.png'
+        });
+
+         var contentString5 = "<h6>Coleta de Oleo de Cozinha</h6></b>Praça Nossa Senhora de Fátima<br>Av. Profa. Cora de Carvalho - Central, Macapá - AP, 68900-040";
+
+        var infowindow5 = new google.maps.InfoWindow({content: contentString5});
+         marker5.addListener('click', function() {
+          infowindow5.open(map, marker5);
+        });
+
+
+
+
+         var mercado = {lat:0.0309919, lng: -51.0516975};
+          var marker6 = new google.maps.Marker({
+          position: mercado,
+          map: map,
+          icon:'img/marron1.png'
+        });
+
+         var contentString6 = "<h6>Coleta de Oleo de Cozinha</h6></b>Mercaso Central<br>R. Cândido Mendes - Perpétuo Socorro, Macapá - AP, 68900-015";
+
+        var infowindow6= new google.maps.InfoWindow({content: contentString6});
+         marker6.addListener('click', function() {
+          infowindow6.open(map, marker6);
+        });
+
+
+
+
+
+        var mega = {lat:0.0818959, lng: -51.1353225};
+        var marker7 = new google.maps.Marker({
+          position: mega,
+          map: map,
+          icon:'img/verde.png'
+        });
+
+        var contentString7 = "<h6>Coleta todo tipo de Lixo - Metal</h6><br>Mega Reciclagem<br> AP-010, Macapá - AP <br> Fone:99151-3081";
+
+        var infowindow7 = new google.maps.InfoWindow({content: contentString7});
+         marker7.addListener('click', function() {
+          infowindow7.open(map, marker7);
+        });
+      }
+    </script>
+    
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap">
+    </script>
+
+
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+</body>
+
+</html>
